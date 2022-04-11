@@ -1,1 +1,204 @@
-<p>obat works!</p>
+<div class="container" id="main-container">
+    <div class="row d-flex mb-3 mt-4">
+      <!-- <div *ngIf="penelusuran" class="col ms-5">
+        <p>Hasil pencarian berdasarkan kata kunci:
+          <span *ngIf="t.kategori !=null" >Kategori:  {{pilihankategori[t.kategori]}}, </span>
+          <span *ngIf="t.katakunci !=null">Kata Kunci: {{addForm.value.katakunci}}, </span>
+          <span *ngIf="t.jenisobat!=null" >Hanya cari: {{addForm.value.jenisobat}}, </span>
+        </p>
+      </div> -->
+      <div class="col">
+        <button *ngIf="hiden" type="button" style="background-color: rgb(112, 142, 240); color: #fff;"
+          class="btn btn-outline-primary float-end" data-toggle="collapse"
+          (click)="openCariObatModal(null!!, 'UlangCari')">
+          Ulangi pencarian</button>
+      </div>
+      <div class="row flex-wrap">
+        <p *ngIf="keranjang.length==0 && penelusuran ==true" class="my-4 "
+          style="font-size:30px;text-align: center;justify-content: center;">Tidak Produk sesuasi dengan Pencarian</p>
+      </div>
+      
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div *ngFor="let d of keranjang index as i" class="col">
+        <div class="card">
+          <div class="row">
+            <div class="col">
+              <img src="../../../assets/obat/{{d.image_path}}" class="card-img-top" alt="..."
+                style="width: 150px; height:150px;">
+            </div>
+            <div class="col">
+              <h1 class="card-text">{{d.name}}</h1>
+              <h5 class="card-text"> per {{d.packaging}}</h5>
+              <h5 class="card-text">Rp.{{d.price_min}} - Rp.{{d.price_max}}</h5>
+            </div>
+          </div>
+  
+          <p class="card-text">{{d.indication}}</p>
+          <div class="card-body">
+          </div>
+          <div class="row">
+            <div class="col">
+              <button id="button" type="button" style="background-color: #708ef0;" class="btn mr-3" data-toggle="collapse"
+                (click)="onTambahKeranjang( null!! ,'tambahkeranjang')" [hidden]="statuskeranjang == true">
+                Tambah ke keranjang </button>
+              <button [disabled]="jumlah[i] <=0" id="button" type="button" style="background-color: #708ef0;" class="btn mr-3" data-toggle="collapse"
+                (click)="onTambahKeranjang( i,'kurang')" [hidden]="statuskeranjang == false">
+                - </button>
+              <a [hidden]="statuskeranjang == false">{{jumlah[i]}}</a>
+              <button id="button" type="button" style="background-color: #708ef0;" class="btn btn-primary mr-3"
+                data-toggle="collapse" (click)="onTambahKeranjang( i,'tambah')" [hidden]="statuskeranjang == false">
+                + </button>
+              <button type="button" style="background-color: rgb(112, 142, 240);" class="btn btn-primary mr-3"
+                data-toggle="collapse" (click)="openCariObatModal( null!!,'detail')">detail </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+  
+    <div *ngIf="keranjang.length !=0" class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button [disabled]="page<=1" type="button" style="background-color:#4ea1c4; color: #fff;" class="btn btn-outline-primary "
+        data-toggle="collapse" (click)="openCariObatModal( null!!,'halsebelumnya')">
+        Sebelumnya </button>
+      <button type="button" style="background-color:#4ea1c4; color: #fff;" class="btn btn-outline-primary"
+        data-toggle="collapse" (click)="openCariObatModal( null!!,'halberikutnya')">
+        Selanjutnya </button>
+    </div>
+  
+    <div *ngIf="keranjang.length !=0"
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <h1>{{jumlahproduk}} Produk</h1>
+      <h1>|</h1>
+      <h1>Estimasi Harga : Rp. {{jumlahharga}}</h1>
+  
+  
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <button type="button" style="background-color: rgb(112, 142, 240);" class="btn btn-primary"
+            data-toggle="collapse" (click)="onTambahKeranjang(null!!,'beli')">
+            Keranjang saya </button>
+        </li>
+      </ul>
+    </div>
+  
+  </div>
+  
+  
+  
+  <!-- modal untuk bayar -->
+  <div id="maubayarModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Keranjang saya</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Produk</th>
+              <th scope="col">Harga satuan</th>
+              <th scope="col">Jumlah produk</th>
+              <th scope="col">Jumlah</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let k of keranjangfix index as i">
+              <th scope="row">{{i+1}}</th>
+              <td>{{k.name}}</td>
+              <td>{{k.price_max}}</td>
+              <td>{{jumlahsatuan[i]}}</td>
+              <td>{{k.price_max*jumlahsatuan[i]}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <a>Total Harga Belanjaan Anda <span><a>{{jumlahharga}}</a></span></a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary">Beli</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- modal untuk pop up -->
+  <div class="modal fade" id="cariobatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title modal-title-login" id="exampleModalLabel">Cari obat dan Alat kesehatan</h1>
+          <button type="button" id="close-login" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- <div class="modal-body">
+          <form name="form" #addForm="ngForm" (ngSubmit)="ulangicariobat(addForm)">
+            <p>Masukan Minimal 1 kata kunci untuk pencarian anda</p>
+            <div class="form-group">
+              <label for="forEmail">kategori</label>
+              <select ngModel class="form-select" aria-label="Default select example" id="kategori" name="kategori">
+                <option *ngFor="let k of pilihankategori" [value]="k.id">{{k.name}}</option>
+              </select>
+  
+            </div>
+            <div class="form-group">
+              <label for="forPassword">Kata Kunci</label>
+              <div class="input-group">
+                <input ngModel class="form-control me-2" type="search" id="katakunci" name="katakunci"
+                  placeholder="Cari obat dan alat kesehatan" aria-label="Search">
+              </div>
+  
+              <div class="form-check">
+                <input ngModel class="form-check-input" type="radio" name="jenisobat" id="obatbebas" value="1" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Hanya Cari Obat Bebas(tanpa resep)
+                </label>
+              </div>
+              <div class="form-check">
+                <input ngModel class="form-check-input" type="radio" name="jenisobat" id="obatkeras" value="2">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Cari Semua Obat(termasuk obat keras)
+                </label>
+  
+              </div>
+              <div>
+                <h3>Harga</h3>
+              </div>
+              <div>
+                <div class="row align-items-center">
+                  <div class="col">
+                    <input ngModel type="number" class="form-control" id="minharga" name="minharga"
+                      aria-describedby="emailHelp" placeholder="Harga Minimal" required>
+                  </div>
+                  <div class="col text-center"> sampai
+                  </div>
+                  <div class="col">
+                    <input ngModel type="number" class="form-control" id="maxharga" name="maxharga"
+                      aria-describedby="emailHelp" placeholder="Harga Maksimal" required>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">atur ulang</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                  (click)="openCariObatModal(null!!, 'akhirpopup')">Cari</button>
+              </div>
+            </div>
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  
