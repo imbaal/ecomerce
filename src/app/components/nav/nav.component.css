@@ -1,0 +1,19 @@
+a{
+    text-decoration: none;
+}
+
+nav {
+    box-shadow: 0 3px 6px #0000001c;
+    height: 4rem;
+}
+
+.modal-title-login {
+    color: #5697b3;
+}
+
+.btn-login{
+    /* border-color: #5697b3;
+    color: #5697b3; */
+    background-color: #5697b3;
+    color: #fff;
+}

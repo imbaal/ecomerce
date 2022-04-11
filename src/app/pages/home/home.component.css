@@ -1,0 +1,40 @@
+.title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #000;
+  }
+  
+  .row, p, title{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .btn-login{
+    background-color: #5697b3;;
+    color: #fff;
+  }
+  
+  /*----- HEADER -----*/
+  
+  .header {
+    /* background-image: url('../../../assets/home.svg'); */
+    /* background-size: 100%; */
+    background-color: #b4d5e493;
+    padding: 50px 0;
+  }
+  
+  .homeimg{
+    width: 100%;
+  }
+  
+  /*----- LAYANAN -----*/
+  
+  .jenis-layanan{
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .layanan-img{
+    width: 35%;
+  }

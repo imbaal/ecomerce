@@ -1,0 +1,18 @@
+footer{
+    background-color: #5697b3;
+}
+
+.footer_content{
+    padding-top: 20px;
+}
+
+h3 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer_content ul li{
+    color: #fff;
+    list-style: none;
+    padding: .25rem 0;
+}
