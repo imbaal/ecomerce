@@ -1,3 +1,6 @@
 .sidebar-menu{
     margin-top: 4.5rem;
 }
+.nav-item {
+    margin-left: 30px;text-size-adjust: 30px;font-size: larger;font-weight: 500;
+}
