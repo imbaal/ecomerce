@@ -9,10 +9,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./darah.component.css']
 })
 export class DarahComponent implements OnInit {
-
+  blood:any =[]
   constructor() { }
 
   ngOnInit(): void {
+    this.testapi()
+  }
+
+  public testapi ():void{
+    const url = "https://opensheet.elk.sh/1Cyob8lBteBVTQLaPZ_r99ba9laeGpRRt_jhqttt_804/golongandarah"
+    fetch(url).then((res) => res.json())
+    .then((data) => {this.blood =data
+      // // data.forEach((row) => {
+      // //   // Do something with each row here.
+      // });
+    });
+    
   }
   public getBloodGroup(): void {
     // this.bloodGroup.getBlood().subscribe(

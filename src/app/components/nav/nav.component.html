@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" id="navbar">
+ 
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="home">
         <img src="../../../assets/logo.svg" alt="Logo Go-Doc" />
@@ -20,8 +21,8 @@
           </li>
           <li>
             <button *ngIf="!hiden" class="btn btn-outline-primary float-end " style="background-color:#4ea1c4; color: #fff;"
-          data-bs-toggle="collapse" >Cari Obat
-          <!-- (click)="openCariObatModal(null!!, 'CariObat')"  -->
+          data-toggle="collapse" (click)="openCariObatModal(null!!, 'CariObat')">Cari Obat
+          <!--   -->
         </button>
             <!-- <button class="btn btn-outline-primary float-end " style="background-color:#4ea1c4; color: #fff;"
           data-toggle="modal" data-target="#cariobatModal" >Cari Obat
@@ -43,6 +44,7 @@
         Logout
       </button> -->
     </div>
+  
   </nav>
   
   <!-- Login Modal -->
@@ -225,12 +227,12 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title modal-title-login" id="exampleModalLabel">Cari obat dan Alat kesehatan</h1>
-          <button type="button" id="close-login" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <h3 class="modal-title modal-title-login" id="exampleModalLabel">Cari obat dan Alat kesehatan</h3>
+          <button type="button" id="close-login" class="btn close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body">aaaaa
             
           <!-- <form name="form" #addForm="ngForm" (ngSubmit)="oncariobat(addForm)">
             <p>Masukan Minimal 1 kata kunci untuk pencarian anda</p>

@@ -73,34 +73,34 @@ export class NavComponent implements OnInit {
 
   // }
 
-  // public openCariObatModal(c: CObat, mode: string): void {
-  //   console.log(mode)
-  //   const container = document.getElementById('main-container')
-  //   const button = document.createElement('button')
+  public openCariObatModal(c: any, mode: string): void {
+    console.log(mode)
+    // const container = document.getElementById('main-container')
+    const button = document.createElement('button')
 
 
-  //   button.type = 'button'
-  //   button.style.display = 'none'
-  //   button.setAttribute('data-bs-toggle', 'modal')
+    button.type = 'button'
+    button.style.display = 'none'
+    button.setAttribute('data-bs-toggle', 'modal')
 
 
-  //   if (mode == 'CariObat') {
-  //     button.setAttribute('data-bs-target', '#cariobatModal')
-  //   }
+    if (mode == 'CariObat') {
+      button.setAttribute('data-bs-target', '#cariobatModal')
+    }
 
-  //   if (mode == 'UlangCari') {
-  //     this.hiden = false
-  //     button.setAttribute('data-bs-target', '#cariobatModal')
-  //   }
-  //   if (mode == 'akhirpopup') {
-  //     this.penelusuran = true
-  //     console.log('berhasil diubah')
-  //   }
-  //   if (mode == 'detail') {
-  //     button.setAttribute('data-bs-target', '#detailprodukModal')
-  //   }
-  //   container!.appendChild(button)
-  //   button.click()
-  // }
+    if (mode == 'UlangCari') {
+      this.hiden = false
+      button.setAttribute('data-bs-target', '#cariobatModal')
+    }
+    if (mode == 'akhirpopup') {
+      this.penelusuran = true
+      console.log('berhasil diubah')
+    }
+    if (mode == 'detail') {
+      button.setAttribute('data-bs-target', '#detailprodukModal')
+    }
+    // container!.appendChild(button)
+    button.click()
+  }
 
 }

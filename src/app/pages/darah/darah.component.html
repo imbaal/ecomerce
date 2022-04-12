@@ -1,4 +1,5 @@
 <div class="container" id="main-container">
+  
     <tr>
         <th class="navbar navbar-light bg-light">
 
@@ -25,16 +26,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr *ngFor="let blo of blood  index as i">
-                        <td>{{ blo.code }}</td>
-                        <td>{{ blo.descrtiption }}</td>
-                        <td>{{blo.created_by}}</td>
+                    <tr *ngFor="let blo of blood  index as i">
+                        <td>{{ blo.id }}</td>
+                        <td>{{ blo.golongan }}</td>
+                        <td>{{blo.deskripsi}}</td>
                         <td>
                             <button (click)="onOpenModal(blo, 'edit')" class="btn btn-outline-primary ml-3">Ubah</button>
                             <button (click)="onOpenModal(blo, 'delete')" class="btn btn-outline-danger">Hapus</button>
 
                         </td>
-                    </tr> -->
+                    </tr>
                 </tbody>
             </table>
         </div>
