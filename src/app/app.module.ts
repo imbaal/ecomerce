@@ -9,6 +9,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DarahComponent } from './pages/darah/darah.component';
 import { ObatComponent } from './pages/obat/obat.component';
+import { PembayaranComponent } from './pages/pembayaran/pembayaran.component';
+import { BankComponent } from './pages/bank/bank.component';
+import { DompetComponent } from './pages/dompet/dompet.component';
+import { SpesialisComponent } from './pages/spesialis/spesialis.component';
+import { CaridokterComponent } from './pages/caridokter/caridokter.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { ObatComponent } from './pages/obat/obat.component';
     FooterComponent,
     HomeComponent,
     DarahComponent,
-    ObatComponent
+    ObatComponent,
+    PembayaranComponent,
+    BankComponent,
+    DompetComponent,
+    SpesialisComponent,
+    CaridokterComponent
   ],
   imports: [
     BrowserModule,
