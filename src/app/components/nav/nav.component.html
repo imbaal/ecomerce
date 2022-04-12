@@ -1,65 +1,105 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" id="navbar">
- 
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="home">
-        <img src="../../../assets/logo.svg" alt="Logo Go-Doc" />
-      </a>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item active">
-            <a class="nav-link mx-3" href="#">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-3" href="#">Artikel</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-3" href="#">Aplikasi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-3" href="#">Riwayat</a>
-          </li>
-          <li>
-            <button *ngIf="!hiden" class="btn btn-outline-primary float-end " style="background-color:#4ea1c4; color: #fff;"
-          data-toggle="collapse" (click)="openCariObatModal(null!!, 'CariObat')">Cari Obat
-          <!--   -->
-        </button>
-            <!-- <button class="btn btn-outline-primary float-end " style="background-color:#4ea1c4; color: #fff;"
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+  id="navbar"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">
+      <img src="../../../assets/logo.svg" alt="Logo Go-Doc" />
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link mx-3" href="#">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-3" href="#">Artikel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-3" href="#">Aplikasi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-3" href="#">Riwayat</a>
+        </li>
+        <li>
+          <button
+            type="button" id="tombolcariobat"
+            style="background-color: #4ea1c4; color: #fff"
+            class="btn btn-outline-primary float-end"
+            data-bs-toggle="collapse"
+            (click)="openCariObatModal(null!!, 'UlangCari')"
+          >
+            Cari obat
+          </button>
+<!-- 
+          <button
+            class="btn btn-outline-primary float-end"
+            style="background-color: #4ea1c4; color: #fff"
+            data-bs-target="#cariobatModal"
+            (click)="openCariObatModal(null!!, 'CariObat')"
+          >
+            Cari Obat
+            
+          </button> -->
+          <!-- <button class="btn btn-outline-primary float-end " style="background-color:#4ea1c4; color: #fff;"
           data-toggle="modal" data-target="#cariobatModal" >Cari Obat
         </button> -->
-          </li>
-        </ul>
-      </div>
-  
-      <button class="btn btn-secondari mr-2" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#registerModal">
-        Daftar
-      </button>
-      <button class="btn btn-login" *ngIf="!isLoggedIn" data-toggle="modal" data-target="#exampleModal">
-        Login
-      </button>
-      <!-- <button *ngIf="isLoggedIn" class="btn btn-login me-2">
+        </li>
+      </ul>
+    </div>
+
+    <button
+      class="btn btn-secondari mr-2"
+      *ngIf="!isLoggedIn"
+      data-toggle="modal"
+      data-target="#registerModal"
+    >
+      Daftar
+    </button>
+    <button
+      class="btn btn-login"
+      *ngIf="!isLoggedIn"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Login
+    </button>
+    <!-- <button *ngIf="isLoggedIn" class="btn btn-login me-2">
         {{ user.fullname }}
       </button> -->
-      <!-- <button class="btn btn-login" *ngIf="isLoggedIn" (click)="onLogout()">
+    <!-- <button class="btn btn-login" *ngIf="isLoggedIn" (click)="onLogout()">
         Logout
       </button> -->
-    </div>
-  
-  </nav>
-  
-  <!-- Login Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title modal-title-login" id="exampleModalLabel">LOGIN</h1>
-          <button type="button" id="close-login" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <!-- <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  </div>
+</nav>
+
+<!-- Login Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title modal-title-login" id="exampleModalLabel">
+          LOGIN
+        </h1>
+        <button
+          type="button"
+          id="close-login"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
               <label for="forEmail">Email*</label>
               <input type="email" class="form-control" id="email" name="email" [(ngModel)]=form.email
@@ -68,7 +108,7 @@
                 Email is required!
               </div>
             </div> -->
-            <!-- <div class="form-group">
+        <!-- <div class="form-group">
               <label for="forPassword">Password*</label>
               <div class="input-group">
                 <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password" name="password"
@@ -84,7 +124,7 @@
                 <div *ngIf="password.errors?.['required']">Password is required</div>
               </div>
             </div> -->
-            <!-- <div class="mb-3" *ngIf="f.submitted && isLoginFailed" style="color: #5697b3;">{{ pesan }}</div>
+        <!-- <div class="mb-3" *ngIf="f.submitted && isLoginFailed" style="color: #5697b3;">{{ pesan }}</div>
             <div class="text-center">
               <button type="submit" class="btn btn-login mb-3">Masuk</button><br>
   
@@ -93,23 +133,34 @@
               <p>Belum memiliki akun? <a href="#">Daftar</a></p>
             </div>
           </form> -->
-        </div>
       </div>
     </div>
   </div>
-  
-  <!-- Register Modal -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title" id="exampleModalLabel">Register</h1>
-          <button type="button" id="closeRegistrasi" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-  
-          <!-- CEK EMAIL -->
-          <!-- <form *ngIf="cekEmail" name="cekEmailForm" (ngSubmit)="cekEmailForm.form.valid && kirimOtp()"
+</div>
+
+<!-- Register Modal -->
+<div
+  class="modal fade"
+  id="registerModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Register</h1>
+        <button
+          type="button"
+          id="closeRegistrasi"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- CEK EMAIL -->
+        <!-- <form *ngIf="cekEmail" name="cekEmailForm" (ngSubmit)="cekEmailForm.form.valid && kirimOtp()"
             #cekEmailForm="ngForm" novalidate>
             <div class="form-group">
               <p>Masukan email Anda. Kami akan melakukan pengecekan</p>
@@ -126,8 +177,8 @@
             </div>
           </form>
    -->
-          <!-- VERIFIKASI KODE OTP -->
-          <!-- <form *ngIf="kodeOtp" name="cekKodeOtp" (ngSubmit)="cekKodeOtp.form.valid && verifikasiOtp()"
+        <!-- VERIFIKASI KODE OTP -->
+        <!-- <form *ngIf="kodeOtp" name="cekKodeOtp" (ngSubmit)="cekKodeOtp.form.valid && verifikasiOtp()"
             #cekKodeOtp="ngForm" novalidate>
             <div class="form-group">
               <p>Masukan kode OTP anda</p>
@@ -144,14 +195,14 @@
               <button type="submit" class="btn btn-login">Verifikasi OTP</button>
             </div>
           </form> -->
-  
-          <!-- SET PASSWORD -->
-          <!-- <form *ngIf="setPassword" name="setPasswordForm" (ngSubmit)="setPasswordForm.form.valid && setPasswords()"
+
+        <!-- SET PASSWORD -->
+        <!-- <form *ngIf="setPassword" name="setPasswordForm" (ngSubmit)="setPasswordForm.form.valid && setPasswords()"
             #setPasswordForm="ngForm" novalidate>
             <div class="form-group">
               <p>Masukan password akun anda</p>
               <label for="forSetPassword">Password</label> -->
-              <!-- <div class="input-group">
+        <!-- <div class="input-group">
                 <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="setPassword"
                   name="setPassword" [(ngModel)]=form.setPassword
                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" placeholder="********"
@@ -163,13 +214,13 @@
                   }" (click)="toggleFieldTextType()"></i>
                 </span>
               </div> -->
-              <!-- <div style="color: #5697b3;" *ngIf="password.errors && setPasswordForm.submitted">
+        <!-- <div style="color: #5697b3;" *ngIf="password.errors && setPasswordForm.submitted">
                 <div *ngIf="password.errors?.['required']">Password is required</div>
                 <div *ngIf="password.errors?.['pattern']">Password harus berisi huruf, angka, dan karakter</div>
               </div>
    -->
-              <!-- <label for="forUlangiPassword">Masukan Ulang Password</label> -->
-              <!-- <div class="input-group">
+        <!-- <label for="forUlangiPassword">Masukan Ulang Password</label> -->
+        <!-- <div class="input-group">
                 <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="repeatPassword"
                   name="repeatPassword" [(ngModel)]=form.repeatPassword placeholder="********" #password="ngModel"
                   required>
@@ -180,7 +231,7 @@
                   }" (click)="toggleFieldTextType2()"></i>
                 </span>
               </div> -->
-              <!-- <div style="color: #5697b3;" *ngIf="password.errors && setPasswordForm.submitted">
+        <!-- <div style="color: #5697b3;" *ngIf="password.errors && setPasswordForm.submitted">
                 <div *ngIf="password.errors?.['required']">Password is required</div>
               </div>
             </div>
@@ -189,9 +240,9 @@
               <button type="submit" class="btn btn-login">Set Password</button>
             </div>
           </form> -->
-  
-          <!-- DAFTAR AKUN -->
-          <!-- <form *ngIf="daftarGodoc" name="daftarForm" (ngSubmit)="daftarForm.form.valid && daftarAkun(daftarForm)" #daftarForm="ngForm" novalidate>
+
+        <!-- DAFTAR AKUN -->
+        <!-- <form *ngIf="daftarGodoc" name="daftarForm" (ngSubmit)="daftarForm.form.valid && daftarAkun(daftarForm)" #daftarForm="ngForm" novalidate>
             <div class="form-group">
               <label for="forNama">Nama Lengkap*</label>
               <input ngModel #fullname="ngModel" type="text" class="form-control" id="fullname" name="fullname" placeholder="Fullname" required>
@@ -213,78 +264,143 @@
               <button type="submit" class="btn btn-primary">Daftar</button>
             </div>
           </form> -->
-        </div>
-        <div class="modal-footer justify-content-center">
-        </div>
       </div>
+      <div class="modal-footer justify-content-center"></div>
     </div>
   </div>
-  
-  
-  
-  <div class="modal fade" id="cariobatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title modal-title-login" id="exampleModalLabel">Cari obat dan Alat kesehatan</h3>
-          <button type="button" id="close-login" class="btn close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">aaaaa
-            
-          <!-- <form name="form" #addForm="ngForm" (ngSubmit)="oncariobat(addForm)">
-            <p>Masukan Minimal 1 kata kunci untuk pencarian anda</p>
-            <div class="form-group">
-              <label for="forEmail">kategori</label>
-              <select ngModel class="form-select" aria-label="Default select example" id="kategori" name="kategori">
-                <option *ngFor="let k of pilihankategori" [value]="k.id">{{k.name}}</option>
-              </select>
-  
+</div>
+
+<div
+  class="modal fade"
+  id="cariobatModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title modal-title-login" id="exampleModalLabel">
+          Cari obat dan Alat kesehatan
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- name="form" #addForm="ngForm" (ngSubmit)="oncariobat(addForm)" -->
+        <form>
+          <p>Masukan Minimal 1 kata kunci untuk pencarian anda</p>
+          <div class="form-group" style="margin-bottom: 10px">
+            <label for="forEmail">kategori</label>
+            <select
+              ngModel
+              class="form-select"
+              aria-label="Default select example"
+              id="kategori"
+              name="kategori"
+            >
+              <option *ngFor="let k of pilihankategori" [value]="k.id">
+                {{ k.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="forPassword">Kata Kunci</label>
+            <div class="input-group" style="margin-bottom: 10px">
+              <input
+                ngModel
+                class="form-control me-2"
+                type="search"
+                id="katakunci"
+                name="katakunci"
+                placeholder="Cari obat dan alat kesehatan"
+                aria-label="Search"
+              />
             </div>
-            <div class="form-group">
-              <label for="forPassword">Kata Kunci</label>
-              <div class="input-group">
-                <input ngModel class="form-control me-2" type="search" id="katakunci" name="katakunci"
-                  placeholder="Cari obat dan alat kesehatan" aria-label="Search">
-              </div>
-  
-              <div class="form-check">
-                <input ngModel class="form-check-input" type="radio" name="jenisobat" id="obatbebas" value="1" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Hanya Cari Obat Bebas(tanpa resep)
-                </label>
-              </div>
-              <div class="form-check">
-                <input ngModel class="form-check-input" type="radio" name="jenisobat" id="obatkeras" value="2">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Cari Semua Obat(termasuk obat keras)
-                </label>
-              </div>
-              <div>
-                <h3>Harga</h3>
-              </div>
-              <div>
-                <div class="row">
-                  <div class="col">
-                    <input ngModel type="number" class="form-control" id="minharga" name="minharga"
-                      aria-describedby="emailHelp" placeholder="Harga Minimal" required>
-                  </div>
-                  <div class="col"> sampai
-                  </div>
-                  <div class="col">
-                    <input ngModel type="number" class="form-control" id="maxharga" name="maxharga"
-                      aria-describedby="emailHelp" placeholder="Harga Maksimal" required>
-                  </div>
+
+            <div class="form-check" style="margin-bottom: 10px">
+              <input
+                ngModel
+                class="form-check-input"
+                type="radio"
+                name="jenisobat"
+                id="obatbebas"
+                value="1"
+                checked
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Hanya Cari Obat Bebas(tanpa resep)
+              </label>
+            </div>
+            <div class="form-check" style="margin-bottom: 10px">
+              <input
+                ngModel
+                class="form-check-input"
+                type="radio"
+                name="jenisobat"
+                id="obatkeras"
+                value="2"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Cari Semua Obat(termasuk obat keras)
+              </label>
+            </div>
+            <div>
+              <h5>Harga</h5>
+            </div>
+            <div>
+              <div class="row">
+                <div class="col">
+                  <input
+                    ngModel
+                    type="number"
+                    class="form-control"
+                    id="minharga"
+                    name="minharga"
+                    aria-describedby="emailHelp"
+                    placeholder="Harga Minimal"
+                    required
+                  />
+                </div>
+                <div class="col">sampai</div>
+                <div class="col">
+                  <input
+                    ngModel
+                    type="number"
+                    class="form-control"
+                    id="maxharga"
+                    name="maxharga"
+                    aria-describedby="emailHelp"
+                    placeholder="Harga Maksimal"
+                    required
+                  />
                 </div>
               </div>
-            
             </div>
-          </form> -->
-        </div>
+            <div style="text-align: right; margin-top: 15px">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                style="margin-right: 10px"
+              >
+                atur ulang
+              </button>
+              <button
+                disabled="invalid"
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="openCariObatModal(null!!, 'akhirpopup')"
+              >
+                Cari
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
-  
+</div>

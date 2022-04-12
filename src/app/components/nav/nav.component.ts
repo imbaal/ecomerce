@@ -75,8 +75,9 @@ export class NavComponent implements OnInit {
 
   public openCariObatModal(c: any, mode: string): void {
     console.log(mode)
-    // const container = document.getElementById('main-container')
+    const container = document.getElementById('tombolcariobat')
     const button = document.createElement('button')
+    
 
 
     button.type = 'button'
@@ -89,7 +90,7 @@ export class NavComponent implements OnInit {
     }
 
     if (mode == 'UlangCari') {
-      this.hiden = false
+      this.hiden = true
       button.setAttribute('data-bs-target', '#cariobatModal')
     }
     if (mode == 'akhirpopup') {
@@ -99,7 +100,7 @@ export class NavComponent implements OnInit {
     if (mode == 'detail') {
       button.setAttribute('data-bs-target', '#detailprodukModal')
     }
-    // container!.appendChild(button)
+    container!.appendChild(button)
     button.click()
   }
 

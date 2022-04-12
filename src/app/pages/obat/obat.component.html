@@ -142,8 +142,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <!-- <div class="modal-body">
-          <form name="form" #addForm="ngForm" (ngSubmit)="ulangicariobat(addForm)">
+        <div class="modal-body">
+          <!-- name="form" #addForm="ngForm" (ngSubmit)="ulangicariobat(addForm)" -->
+          <form >
             <p>Masukan Minimal 1 kata kunci untuk pencarian anda</p>
             <div class="form-group">
               <label for="forEmail">kategori</label>
@@ -191,12 +192,12 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">atur ulang</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                <button disabled="invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
                   (click)="openCariObatModal(null!!, 'akhirpopup')">Cari</button>
               </div>
             </div>
           </form>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
