@@ -10,6 +10,7 @@ import { DefaultNominal } from 'src/app/models/t_customer_wallet';
 })
 export class DompetComponent implements OnInit {
   public defaultNominal: any[] = []
+  dompetatm :any =[]
   public pesan = ""
   public hidden = false
   public editDefaultNominal: DefaultNominal
@@ -22,6 +23,17 @@ export class DompetComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetNominalDefault()
+  }
+
+  public testapidompet (){
+    const url = "https://opensheet.elk.sh/1Cyob8lBteBVTQLaPZ_r99ba9laeGpRRt_jhqttt_804/kartukredit"
+    fetch(url).then((res) => res.json())
+    .then((data) => {console.log(data)
+      this.dompetatm =data
+      // // data.forEach((row) => {
+      // //   // Do something with each row here.
+      // });
+    });
   }
 
   public onGetNominalDefault() {
