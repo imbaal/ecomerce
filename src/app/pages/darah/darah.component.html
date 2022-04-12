@@ -1,1 +1,145 @@
-<p>darah works!</p>
+<div class="container" id="main-container">
+    <tr>
+        <th class="navbar navbar-light bg-light">
+
+                    <!-- <input ngModel (ngModelChange)="onSearchBlood($event)" class="form-control me-2" type="search"
+                    placeholder="Cari" aria-label="Search">
+                 -->
+        </th>
+        <th>
+            <!-- <button type="button" style="background-color: rgb(112, 142, 240);" class="btn" data-toggle="collapse"
+                (click)="onOpenModal(null!!, 'add')">
+                Tambah</button> -->
+        </th>
+
+    </tr>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Kode</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">created by</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let blo of blood  index as i">
+                        <td>{{ blo.code }}</td>
+                        <td>{{ blo.descrtiption }}</td>
+                        <td>{{blo.created_by}}</td>
+                        <td>
+                            <button (click)="onOpenModal(blo, 'edit')" class="btn btn-outline-primary ml-3">Ubah</button>
+                            <button (click)="onOpenModal(blo, 'delete')" class="btn btn-outline-danger">Hapus</button>
+
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addBloodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">TAMBAH GOLONGAN DARAH</h1>
+                <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <form #addForm="ngForm" (ngSubmit)="onAddBloodGroup(addForm)">
+                    <div class="form-group">
+                        <label for="code">Kode*</label>
+                        <input ngModel type="text" class="form-control" id="code" name="code"
+                            aria-describedby="emailHelp" placeholder="kode darah">
+                        <p *ngIf="peringatan ==true">*Data anda Sudah ada</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrtiption">Deskripsi</label>
+                        <input ngModel type="text" class="form-control" id="descrtiption" name="descrtiption"
+                            placeholder="Deskripsi" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-blood-form" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Tutup</button>
+                        <button  type="submit" class="btn btn-primary">Simpan Data</button>
+                    </div>
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal EDIT -->
+<div class="modal fade" id="editBloodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Ubah Golongan Darah</h1>
+                <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <form #editForm="ngForm">
+                    <div class="form-group">
+                        <input type="hidden" ngModel="{{ editBlood.id }}" name="id" id="id">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" ngModel="{{ editBlood.code }}" name="code" id="code">
+                        <label for="code">Kode*</label>
+                        <input ngModel="{{editBlood?.code }}" type="text" class="form-control" id="code" name="code"
+                            aria-describedby="emailHelp" placeholder="Kode Darah">
+                    </div>
+                    <div class="form-group">
+                        <label for="blooddeskripsi">Deskripsi</label>
+                        <input ngModel="{{ editBlood?.descrtiption }}" type="text" class="form-control"
+                            id="descrtiption" name="descrtiption" placeholder="Deskripsi" required
+                            data-bs-dismiss="modal">
+                            <p *ngIf="editsama ==true">*Data anda Sudah ada</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-blood-form" class="btn btn-secondary"
+                            data-dismiss="modal">Batal</button>
+                        <button (click)="onEditBloodGroup(editForm.value)" type="button" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal DELETE -->
+<div class="modal fade" id="deleteBloodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">HAPUS!</h1>
+                <button type="button" class="close" aria-label="Close" data-bs-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <!-- Anda yakin ingin menghapus? {{ deleteBlood.code }} -->
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                <!-- <button (click)="onDeleteBloodGroup(deleteBlood.id)" type="button" class="btn btn-primary"
+                    data-bs-dismiss="modal">Ya</button> -->
+            </div>
+        </div>
+    </div>
+</div>

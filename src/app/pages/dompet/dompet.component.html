@@ -1,0 +1,151 @@
+<div class="container" id="main-container">
+
+
+    <div class="container">
+        <h1 class="tittle-header_set ">Default Nominal</h1>
+        <div class="top-content">
+            <button (click)="openModal(null!,'add')" type="button" class="btn btn-primary addbutton"
+                data-toggle="collapse"><i class="fas fa-plus-circle"></i>
+                Tambah</button>
+
+            <div class="wrap">
+                <div class="searchItem">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?" ngModel
+                        (ngModelChange)="onGetSearched($event)">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="container1">
+        <div class="col-12">
+            <table class="table styled-table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="data-number">No</th>
+                        <th scope="col">Nominal</th>
+                        <th scope="col" class="action-button">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of defaultNominal;let i = index">
+                        <th class="data-number">{{i+1}}</th>
+                        <td class="data-name">{{data.nominal}}</td>
+                        <td class="action-button">
+                            <button class="btn btn-primary" (click)="openModal(data,'edit')"><i
+                                    class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger m-2" (click)="openModal(data,'delete')"><i
+                                    class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" style="text-align: center;color:#5697b3">Tambah Nominal Pembayaran</h1>
+                </div>
+                <div class="modal-body">
+                    <!-- <form #addForm="ngForm">
+                        <div class="mb-3">
+                            <label for="name">Nominal*</label>
+                            <input ngModel type="text" class="form-control" name="nominal" placeholder="Masukan Nominal"
+                                required>
+                            <p *ngIf="hidden" class="error-messages">{{pesan}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="add-form"
+                                data-bs-dismiss="modal" (click)="onClose();addForm.resetForm()">Close</button>
+                            <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary"
+                                (click)="onAddDefaultNominal(addForm.value)">Simpan</button>
+                        </div>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title mt-3" style="text-align: center;color:#5697b3">Edit Default Nominal</h1>
+                </div>
+                <div class="modal-body ">
+                    <!-- <form #editForm="ngForm">
+                        <div class="mb-3 containeredit">
+                            <label type="text" hidden ngModel="{{editDefaultNominal.id}}"
+                                name="id">{{editDefaultNominal.id}}</label>
+                            <label for="name" class="nameedit">Nominal*</label>
+                            <input ngModel={{editDefaultNominal.nominal}} type="text" class="form-control"
+                                name="nominal" placeholder="Masukan Nama Pembayaran" required>
+                            <p *ngIf="hidden" class="error-messages">{{pesan}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary editprimary canceleditbtn" id="add-form"
+                                data-bs-dismiss="modal" (click)="onClose();editForm.resetForm()">Close</button>
+                            <button type="submit" (click)="onEditNominalDefault(editForm.value);editForm.resetForm()"
+                                class="btn btn-primary  editprimary succeseditbtn">Simpan</button>
+                        </div>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade modaldelete" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form>
+                        <div class="containerdelete">
+                            <h1>Hapus Jenis Pembayaran</h1>
+                            <p>Apakah kamu yakin akan mengahapus<b>{{deletedefaultnominal.nominal}} </b>?</p>
+                            <div class="clearfix">
+                                <button type="button" class="cancelbtn deleteprimary "
+                                    data-bs-dismiss="modal" >Cancel</button>
+                                <button type="button" (click)="onDelete(deletedefaultnominal.id)" name="id"
+                                    data-bs-dismiss="modal" class="deletebtn deleteprimary ">Delete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="success" class="modal fade modaldelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE876;</i>
+                    </div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body text-center modal-content__body ">
+                    <h4>Berhasil!</h4>
+                    <p class="mt-4">Saldo Anda Sudah Bertambah.</p>
+                    <button class="btn btn-success" data-bs-dismiss="modal"><span>Kembali</span> <i
+                            class="material-icons">&#xE5C8;</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
